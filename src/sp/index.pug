@@ -1,0 +1,20 @@
+extends _includes/_layout.pug
+include _includes/_meta.pug
+
+block var
+  - metas = json;
+  - console.log(metas)
+
+block meta
+  +meta(metas.site)
+
+block append link
+  link(, href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel='stylesheet' type='text/css')
+  link(href=`https://use.typekit.net/mak4wre.css` rel='stylesheet' type='text/css')
+  link(href=`/sp/css/ultraseven.css?${Date.now()}` rel='stylesheet' type='text/css')
+
+block append script
+  script(type="text/javascript" src=`/sp/js/ultraseven.js?${Date.now()}`)
+
+block content
+  main.cnt

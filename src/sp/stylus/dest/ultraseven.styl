@@ -1,0 +1,479 @@
+@import '../layout/_main'
+
+vw(size)
+	return round(100 * (size/750),2)vw
+
+vvw(size)
+  "calc( %s * (100vw / 750))" % size
+
+closeclip(size=1)
+  clip-path: polygon((size)px 0, 0 (size)px, "calc(50% - %spx)" % size 50%, 0% "calc(100% - %spx)" % size, (size)px 100%, 50% "calc(50% + %spx)" % size, "calc(100% - %spx)" % size 100%, 100% "calc(100% - %spx)" % size, "calc(50% + %spx)" % size 50%, 100% (size)px, "calc(100% - %spx)" % size 0, 50% "calc(50% - %spx)" % size);
+
+arr(dir,size=2)
+  if dir == 'prev'
+    clip-path: polygon(100% (size)px, (size*2)px 50%, 100% "calc(100% - %spx)" % size, "calc(100% - %spx)" % size 100%, 0 50%, "calc(100% - %spx)" % size 0);
+  else
+    clip-path: polygon((size)px 0, 100% 50%, (size)px 100%, 0 "calc(100% - %spx)" % size, "calc(100% - %spx)" % (size*2) 50%, 0 (size)px);
+
+.ultraseven
+  display: block;
+  position relative;
+  min-width: 320px;
+  width: 100%;
+  overflow: hidden;
+  font-family: 'Noto Sans JP', sans-serif;
+
+  &__lay1
+    position: absolute;
+    width: 100%;
+    min-width: 320px;
+    height: 100%;
+    z-index: 1;
+    background: #ea0b2a;
+  
+  &__lay2
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    z-index: 2;
+
+  &__ttl
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+
+    img
+      max-width: 100%;
+      height auto;
+  
+  &__lead
+    margin-bottom: 50px;
+    > p
+      font-size: 10px;
+      line-height: round(14/10,2);
+      text-align: left;
+      padding: 0 10px;
+      box-sizing: border-box;
+
+      &.is-em
+        font-size: 12px;
+        line-height: 1.0;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-align: center;
+        padding: 0;
+  
+  &__lineup
+    position relative;
+    width: 100%;
+    margin: 0 auto 120px;
+    padding: 0 10px;
+    box-sizing: border-box;
+  
+  &__allbtn
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+    
+    > .allbtn
+      width: calc(100% - 40px);
+  
+  &__ico
+    margin: 50px auto;
+    text-align: center;
+
+    img
+      width: 100px;
+      height auto;
+
+.bg-layer1
+  &__main
+    position relative;
+
+    &::before
+      display: block;
+      content: "";
+      width: 100%;
+      padding-bottom: calc(100% - 1px)
+
+  &__top
+    position relative;
+    width: 100%;
+    height 20%;
+    background: #fff
+
+    > .bg-band
+      &:nth-child(1)
+        width: 200%;
+        transition: .5s clip-path;
+        clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+
+        &.is-active
+          clip-path: polygon(0 0, calc(35%) 0, calc(35% - 11px) 100%, 0 100%);
+
+      &:nth-child(2)
+        width: 200%;
+        transition: .5s clip-path;
+        clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+
+        &.is-active
+          clip-path: polygon(calc(49.5% + 11.5px ) 0, 100% 0, 100% 100%, calc(49.5%) 100%);
+
+    &::after
+      position: absolute;
+      width: 100%;
+      height 175px;
+      background: #ea0b2a;
+      bottom: -1px;
+      left 0;
+      display: block;
+      content: "";
+      clip-path: polygon(0 71.5%, 100% 0, 100% 100%, 0 100%);
+    
+    > .seven1
+      position: absolute;
+      display: block;
+      width: 33%;
+      height auto;
+      right: 0;
+      z-index: 10;
+      clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+      transition: .4s;
+
+      &.is-active
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+
+.bg-band
+  position: absolute;
+  height 30px;
+  background #ea0b2a;
+  left: 50%;
+  transform: translateX(-50%) rotateZ(-20deg);
+
+.lineup
+  &__ttl
+    font-family: birra, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+  
+  &__ico
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+
+    img
+      width: 90px;
+      height auto;
+  
+  &__anchor
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    > .anchor-item
+      position relative;
+      width: 31%;
+
+      &:nth-child(1)
+        margin-left: 17%;
+        margin-bottom: 30px;
+
+      &:nth-child(2)
+        margin-right: 17%;
+        margin-bottom: 30px;
+
+.anchor-item
+  transition: .4s;
+  transform: scale(0);
+
+  .is-active &
+    transform: scale(1);
+
+    for num in (1..5)
+      &:nth-child({num})
+        transition-delay: (num)*.04s;
+
+  &:hover
+    cursor pointer;
+
+  &__ttl
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: -18px;
+    font-family: birra, sans-serif;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 10px;
+    z-index: 10;
+    text-shadow: 
+      white 1px 0px,  white -1px 0px,
+      white 0px -1px, white 0px 1px,
+      white 1px 1px , white -1px 1px,
+      white 1px -1px, white -1px -1px,
+      white 1px 1px,  white -1px 1px,
+      white 1px -1px, white -1px -1px,
+      white 1px 1px,  white -1px 1px,
+      white 1px -1px, white -1px -1px;
+  
+  img
+    display: block;
+    width: 100%;
+    height auto;
+
+.sec-area
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 0 20px;
+  box-sizing: border-box;
+
+  & + &
+    margin-top: 40px;
+
+  &__ttl
+    position relative
+    font-size: 20px;
+    font-family: birra, sans-serif;
+    color: #fff;
+    line-height: 1.0;
+    margin-bottom: 30px;
+
+    &::before
+      position: absolute
+      display: block;
+      content: "";
+      width: 100%;
+      bottom: -5.5px;
+      height 2px;
+      border-bottom: 3px solid #fff;
+
+    &::after
+      display: block;
+      content: "";
+      width: 100%;
+      height 3px;
+      margin-top: 2px;
+      border-top: 1px solid #fff;
+      border-bottom: 2px solid #fff;
+
+    &.is-blk
+      color: #000;
+
+      &::before
+        border-color: #ea0b2a;
+      
+      &::after
+        border-color: #ea0b2a;
+  
+  &__lead
+    width: 100%;
+    text-align: center;
+    margin-top: -10px;
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 10px;
+    letter-spacing: .12em;
+  
+  > .shop-list
+    width: 700px;
+    margin: 0 auto;
+
+  &__cnt
+    position relative;
+    width: 100%;
+
+    > .item-cnt
+      width: 100%;
+
+.item-cnt
+
+  & + &
+    margin-top: 40px;
+
+  &__pic
+    opacity 0;
+    margin-bottom: 15px;
+
+    img
+      max-width: 100%;
+      height auto;
+
+    .is-active &
+      opacity 1;
+      animation: slash .8s forwards
+  
+  &__name
+    font-size: 14px;
+    text-align: center;
+    line-height: round(18/14,2);
+    color: #fff;
+    letter-spacing: .04em;
+    margin-bottom: 10px;
+
+    &::before
+      content: "ULTRASEVEN COLLECTION";
+      display: block;
+      text-align: center;
+      font-family: birra, sans-serif;
+  
+  &__price
+    font-size: 14px;
+    color: #fff;
+    line-height: 1.0;
+    margin-bottom: 15px;
+    text-align: center;
+  
+  &__btn
+    display: flex;
+    justify-content: center;
+
+    > .item-btn
+      width: 120px;
+  
+  &__setup
+    display: flex;
+    justify-content: center;
+
+    &_list:nth-child(1)
+      margin-right: 30px;
+
+  &__setup &__name
+    &::before
+      display: none;
+
+  > .seven2
+    position: relative;
+    display: block;
+    right: -20px;
+    bottom: 0;
+    z-index: 10;
+    transition: .4s;
+    transform: translateX(100%)
+    margin-top: 20px;
+    width: 100%;
+    height auto;
+
+    &.is-active
+      transform: translateX(0)
+
+.pic-slider
+  position relative
+
+  img
+    display: block;
+    position: absolute;
+    top: 0;
+    left 0;
+    opacity 0;
+    z-index: 5;
+    transition: .8s opacity;
+
+    &.is-active
+      position relative
+      top: 0;
+      left 0;
+      opacity 1;
+
+.item-btn
+  position relative
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height 35px;
+  border: 1px solid #fff;
+  text-decoration: none !important;
+  font-size: 12px;
+  color: #fff !important;
+  transition: .2s;
+
+  &::before
+    content: ""
+    position: absolute;
+    z-index 5;
+    left 50%;
+    width: 60px;
+    height 15px;
+    background: url('/_img/pc/btn_ico.png') center / contain no-repeat
+    transform: translate(-50%,-18px);
+  
+  &:hover
+    opacity .7;
+
+.allbtn
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height 45px;
+  font-size: 12px;
+  line-height: round(25/16,2);
+  background: #fff;
+  text-decoration: none !important;
+  color: #ea0b2a !important;
+  transition: .2s;
+  text-align: center;
+  font-weight: bold;
+
+  &:hover
+    opacity .7;
+
+.shop-list
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  &__item
+    position: relative;
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: .12em;
+    line-height: round(24/14,2);
+
+    &::after
+      content: "/";
+      margin-left: .5em;
+      margin-right: .5em;
+
+    &:last-child::after
+      display: none;
+
+.infobtn
+  width: calc(100% - 60px);
+  height 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  line-height: 1.0;
+  color: #fff !important;
+  text-decoration: none !important;
+  background: #003156;
+  margin: 30px auto 60px;
+  font-family: 'Noto Sans JP', sans-serif;
+  letter-spacing: .05em;
+
+.gotolineup
+  position: fixed;
+  display: block;
+  bottom: 10px;
+  right 10px;
+  z-index 1000;
+  display: none;
+  width: 50px;
+  height auto;
+
+
+@keyframes slash
+  from
+    clip-path: polygon(100% 32.5%, 100% 33%, 100% 33.5%, 100% 34%);
+  30%
+    clip-path: polygon(0 66.5%, 100% 33%, 100% 33.5%, 0 67%);
+  60%
+    clip-path: polygon(0 66.5%, 100% 33%, 100% 33.5%, 0 67%);
+  to
+    clip-path: polygon(0 0, 100% -33.5%, 100% 100%, 0 133.5%);

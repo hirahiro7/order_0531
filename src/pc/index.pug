@@ -1,0 +1,385 @@
+extends _includes/_layout.pug
+include _includes/_meta.pug
+
+block var
+  -
+    var metas = json;
+    console.log(json);
+    var items = [
+      {
+        sku1:'523',
+        sku2:'19002',
+        name:'GRJチュール',
+        price:'¥8,910',
+        otherval:'entry.696180646',
+        sizes:[
+          {
+            val:'entry.465706624',
+            name:'34',
+          },
+          {
+            val:'entry.441620315',
+            name:'38',
+          },
+        ],
+        colors:['ブラック','ブルー'],
+        categoryid:[1,2,3,4,5,6]
+      },
+      {
+        sku1:'523',
+        sku2:'89001',
+        name:'GITサテン',
+        price:'¥9,900',
+        otherval:'entry.1291515514',
+        sizes:[
+          {
+            val:'entry.1711218457',
+            name:'38',
+          },
+        ],
+        colors:['ブラック','ベージュ'],
+        categoryid:[1,2,3,4,5,6]
+      },
+      {
+        sku1:'523',
+        sku2:'89012',
+        name:'GTYデニムリボン',
+        price:'¥11,990',
+        otherval:'entry.763173588',
+        sizes:[
+          {
+            val:'entry.1685141056',
+            name:'34',
+          },
+          {
+            val:'entry.756430261',
+            name:'38',
+          },
+        ],
+        colors:['チャコールグレー','ブルー'],
+        categoryid:[1,2,3,4,5,6]
+      },
+      {
+        sku1:'523',
+        sku2:'89010',
+        name:'GSTオフショル',
+        price:'¥12,980',
+        otherval:'',
+        sizes:[
+          {
+            val:'',
+            name:'38',
+          },
+        ],
+        colors:['ブラック','ブルー'],
+        categoryid:[1,2,3,4,5,6]
+      },
+      {
+        sku1:'523',
+        sku2:'89006',
+        name:'GRJケープシャツ',
+        price:'¥10,890',
+        otherval:'',
+        sizes:[
+          {
+            val:'',
+            name:'38',
+          },
+        ],
+        colors:['オフ','ブラック','ブルー'],
+        categoryid:[1,2,3,4,5,6]
+      },
+      {
+        sku1:'523',
+        sku2:'59001',
+        name:'GZPシアーローン',
+        price:'¥12,980',
+        otherval:'',
+        sizes:[
+          {
+            otherval:'',
+            name:'38',
+          },
+        ],
+        colors:['アイボリー','ブラック'],
+        categoryid:[1,2,3,4,5,6]
+      },
+      {
+        sku1:'523',
+        sku2:'69003',
+        name:'GRJフレアデニム',
+        price:'¥12,980',
+        otherval:'',
+        sizes:[
+          {
+            otherval:'',
+            name:'36',
+          },
+          {
+            otherval:'',
+            name:'38',
+          },
+          {
+            otherval:'',
+            name:'40',
+          },
+        ],
+        colors:['ブラック','ブルー'],
+        categoryid:[1,2,3,4,5,6]
+      },
+      {
+        sku1:'523',
+        sku2:'69014',
+        name:'GZPカルゼ',
+        price:'¥9,900',
+        otherval:'',
+        sizes:[
+          {
+            otherval:'',
+            name:'36',
+          },
+          {
+            otherval:'',
+            name:'38',
+          },
+        ],
+        colors:['ブラック','オリーブ'],
+        categoryid:[1,2,3,4,5,6]
+      },
+      {
+        sku1:'523',
+        sku2:'79012',
+        name:'GTYラップデニム',
+        price:'¥11,990',
+        otherval:'',
+        sizes:[
+          {
+            otherval:'',
+            name:'36',
+          },
+          {
+            otherval:'',
+            name:'38',
+          },
+          {
+            otherval:'',
+            name:'40',
+          },
+        ],
+        colors:['チャコール','ブルー'],
+        categoryid:[1,2,3,4,5,6]
+      },
+      {
+        sku1:'523',
+        sku2:'',
+        name:'GRJデニム',
+        price:'¥16,940',
+        otherval:'',
+        sizes:[
+          {
+            otherval:'',
+            name:'34',
+          },
+          {
+            otherval:'',
+            name:'38',
+          },
+        ],
+        colors:['ブラック','ブルー'],
+        categoryid:[1,2,3,4,5,6]
+      },
+      {
+        sku1:'523',
+        sku2:'19003',
+        name:'GZPクリア天竺',
+        price:'¥5,940',
+        otherval:'',
+        sizes:[
+          {
+            otherval:'',
+            name:'38',
+          },
+        ],
+        colors:['ホワイト','ブラック'],
+        categoryid:[1,2,3,4,5,6]
+      },
+      {
+        sku1:'523',
+        sku2:'19004',
+        name:'GZPクリア天竺',
+        price:'¥5,940',
+        otherval:'',
+        sizes:[
+          {
+            otherval:'',
+            name:'38',
+          },
+        ],
+        colors:['ホワイト','ブラック','グリーン'],
+        categoryid:[1,2,3,4,5,6]
+      },
+      {
+        sku1:'523',
+        sku2:'89004',
+        name:'GITネックギャザー',
+        price:'¥12,980',
+        otherval:'',
+        sizes:[
+          {
+            otherval:'',
+            name:'38',
+          },
+        ],
+        colors:['オフ','ブラック','ブルー'],
+        categoryid:[1,2,3,4,5,6]
+      },
+    ];
+    var category = [
+      {
+        id:1,
+        name:'TOPS',
+      },
+      {
+        id:2,
+        name:'DRESS',
+      },
+      {
+        id:3,
+        name:'PANTS',
+      },
+      {
+        id:4,
+        name:'SKIRT',
+      },
+      {
+        id:5,
+        name:'OUTER',
+      },
+      {
+        id:6,
+        name:'SETUP',
+      },
+    ];
+
+block meta
+  +meta(metas.site)
+
+block append font
+  link(rel="preconnect" href="https://fonts.googleapis.com")
+  link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+  link(href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet")
+  link(href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600&display=swap" rel="stylesheet")
+  link(href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet")
+
+block append link
+  //- link(rel="stylesheet" href="https://portfolio-technics.com/sample/0-css/style.css")
+  link(href=`/pc/css/order.css?${Date.now()}` rel='stylesheet' type='text/css')
+
+block append script
+  script(type="text/javascript" src=`/pc/js/order.js?${Date.now()}`)
+  
+block append plugin
+  // slick
+  link(rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css")
+  script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js")
+  // lenis
+  script(src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js")
+  // gsap
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js")
+
+block content
+  artilce.l-order
+    .l-order__ttl
+      hgroup.p-ttl
+        .p-ttl__logo
+          svg(width="153.932" height="27.35" viewBox="0 0 153.932 27.35" role="img" aria-label="GALLEST")
+            path(d="M24.319,18.486A11.7,11.7,0,0,1,12.881,27.35,12.992,12.992,0,0,1,0,14.244,13.057,13.057,0,0,1,13.182,1.135,12.726,12.726,0,0,1,20.759,3.56a17.486,17.486,0,0,1,2.8,2.69L20.835,8.864C18.674,5.986,16.329,4.7,13.258,4.7A9.35,9.35,0,0,0,3.825,14.28a9.413,9.413,0,0,0,9.169,9.469,7.609,7.609,0,0,0,7.537-6.479H14.244v-3.56H24.66v.834A17.4,17.4,0,0,1,24.319,18.486Zm34.69,8.371V1.592h3.825V23.257h7.425v3.6Zm19.015,0V1.592h3.825V23.257h7.425v3.6Zm18.746,0V1.592H110.71v3.6H100.6v6.062h9.81v3.6H100.6v8.411H110.71v3.6H96.771v-.008ZM148.135,5.188V26.853H144.31V5.188h-5.8v-3.6h15.419v3.6h-5.8ZM127.64,11.819,125.1,10.8c-1.82-.718-2.726-1.744-2.726-2.955,0-1.78,1.552-3.143,3.672-3.143a3.634,3.634,0,0,1,2.578.91A5.667,5.667,0,0,1,129.8,7.2l3.107-1.82a7.791,7.791,0,0,0-1.932-2.5,7.221,7.221,0,0,0-4.887-1.744c-4.318,0-7.577,2.879-7.577,6.667,0,2.879,1.668,4.923,5.152,6.4l2.425,1.022c2.574,1.1,3.636,2.309,3.636,4.318a4.071,4.071,0,0,1-4.165,4.206,4.257,4.257,0,0,1-3.636-1.932,6.192,6.192,0,0,1-.67-2.373l-3.809.818c.786,4.466,3.688,7.084,8,7.084a7.885,7.885,0,0,0,8.106-8.106C133.55,15.8,131.77,13.486,127.64,11.819ZM52.422,26.857H48.337l-2.678-5.986H34.638L31.96,26.857H27.875l2.734-5.986L40.151,0l9.538,20.871h0ZM40.151,8.559l-3.893,8.708h7.79Z" fill="#000")
+        h1.p-ttl__ttl 注文フォーム
+    .l-order__about
+      .p-about
+        p ご注文内容をご記入ください。後日、弊社より折り返しご連絡差し上げます。<br>ご注文の完了は、ご注文の詳細と在庫を確認させていただいてからとなります。
+        p 迅速なご注文手続きをご希望の場合、または現在の在庫状況や価格の確認をご希望の場合は、（+81）000-0000 または no_reply@example.com までお問い合わせください。
+        p.is-em 同カラー、同サイズを複数お求めの際は、お手数ですが「補足情報」にその旨ご記載ください。
+    .l-order__form
+      form(action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfGuOx6GuVlt6RT2whWl9PCu-Jy3ysCfk-KKUf2geUyy0G5Lg/formResponse" method="post" target="hidden_iframe" onsubmit="submitted = true;").p-form
+        .c-input.is-required
+          .c-input__label お客様番号
+          .c-input__txt
+            input(type="text" name="entry.1697608423" required="").c-textform
+        .c-input
+          .c-input__label 入力サンプルA 
+          .c-input__txt
+            input(type="text" name="").c-textform
+        .c-input.is-max
+          .c-input__label 入力サンプルB 
+          .c-input__txt
+            input(type="text" name="").c-textform
+        .c-input.is-max
+          .c-input__label 入力サンプルC 
+          .c-input__txt
+            input(type="text" name="").c-textform
+        .p-itemarea.is-max
+          .p-itemarea__category
+            .p-category
+              .c-category.is-active ALL
+              each cate , i in category
+                .c-category !{cate.name}
+          .p-itemarea__detail
+            .p-item.is-active
+              each item , i in items
+                .c-item
+                  .c-item__img
+                    img(src="https://store.world.co.jp/img/item/BR688/BR68824S0026/BR68824S0026_l2_c102.jpg", alt="")
+                  p.c-item__num !{item.sku1}-!{item.sku2}
+                  p.c-item__name !{item.name}
+                  .c-item__check
+                    table.c-checkTbl
+                      tr
+                        td
+                        each color, z in item.colors
+                          th !{color}
+
+                      each size, j in item.sizes
+                        tr
+                          td !{size.name}
+                          each color, z in item.colors
+                            td 
+                              input(type="checkbox"  name=`${size.val}` value=`${color}`).c-checkform
+                  .c-item__other
+                    .c-input
+                      .c-input__label.is-other 補足情報
+                      .c-input__txt
+                        input(type="text" name=`${item.otherval}` placeholder="同アイテム2個以上等").c-textform
+
+            each cate , i in category
+              .p-item
+                each item , i in items
+                  .c-item
+                    .c-item__img
+                    p.c-item__num !{item.sku1}-!{item.sku2}
+                    p.c-item__name !{item.name}
+                    .c-item__check
+                      table.c-checkTbl
+                        tr
+                          td
+                          each color, z in item.colors
+                            th !{color}
+
+                        each size, j in item.sizes
+                          tr
+                            td !{size.name}
+                            each color, z in item.colors
+                              td 
+                                input(type="checkbox"  name=`${size.val}` value=`${color}`).c-checkform
+                    .c-item__other
+                      .c-input
+                        .c-input__label.is-other 補足情報
+                        .c-input__txt
+                          input(type="text" name="entry.1697608423" placeholder="同アイテム2個以上等").c-textform
+        button(type="submit").p-form__submit.is-max 注文する
+        script.
+          var submitted = false;
+        iframe(name="hidden_iframe" id="hidden_iframe" style="display: none" onload="if(submitted){window.location='thanks.html';}")
+    .l-order__footer
+      p Copyrights © WORLD CO.,LTD. All rights reserved.      

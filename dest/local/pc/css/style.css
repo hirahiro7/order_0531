@@ -1,0 +1,10 @@
+.wrapper {
+  display: block;
+  position: relative;
+  min-width: 1230px;
+  width: 100%;
+  overflow: hidden;
+  font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", sans-serif;
+  -webkit-font-feature-settings: "palt";
+  font-feature-settings: "palt";
+}

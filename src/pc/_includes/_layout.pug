@@ -1,0 +1,26 @@
+block var
+doctype html
+html
+  head(prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#") 
+    meta(charset="utf-8")
+    meta(http-equiv="x-ua-compatible" content="ie=edge")
+    meta(name="viewport" content="width=device-width,initial-scale=1")
+    link(rel="shortcut icon" href="favicon.ico")
+    link(rel="apple-touch-icon" sizes="192x192" href="images/apple-touch-icon.png")  
+    block meta
+    block font
+      // font
+    link(href=`/pc/css/base.css?` rel='stylesheet' type='text/css')
+    link(href=`https://store.world.co.jp/res/p/search/css/search.css` rel='stylesheet' type='text/css' media='screen and (min-width:768px)')
+    link(href=`https://store.world.co.jp/res/s/search/css/search.css` rel='stylesheet' type='text/css' media='screen and (max-width:767px)')
+    link(href=`https://store.world.co.jp/res/p/snap/css/snap_inc.css` rel='stylesheet' type='text/css')
+    block link
+      // style
+    script(type="text/javascript" src="https://code.jquery.com/jquery-1.12.1.min.js")
+    block plugin 
+      // plugin
+    block script
+      // script
+
+  body
+    block content

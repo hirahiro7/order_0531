@@ -1,0 +1,99 @@
+@charset "utf-8";
+body {
+  font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'Meiryo', 'メイリオ', 'Osaka', 'MS PGothic', arial, helvetica, sans-serif;
+}
+body,
+div,
+pre,
+p,
+blockquote,
+form,
+fieldset,
+input,
+textarea,
+select,
+option,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+table,
+th,
+td,
+tr,
+embed,
+object,
+a,
+img {
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  word-wrap: break-word;
+}
+/*font*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+b,
+em {
+  font-style: normal;
+  font-weight: normal;
+  text-align: justify;
+}
+/*others*/
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+*html table {
+  border-collapse: collapse;
+}
+*:first-child+html table {
+  border-collapse: collapse;
+}
+table,
+th,
+td,
+tr,
+img {
+  border: none;
+}
+th {
+  text-align: center;
+  font-weight: normal;
+}
+td {
+  vertical-align: middle;
+  border-collapse: collapse;
+}
+img {
+  vertical-align: bottom;
+}
+input {
+  vertical-align: middle;
+}
+q:before,
+q:after {
+  content: '';
+}
+ul {
+  list-style: none;
+}
+strong {
+  font-weight: normal;
+}
+a {
+  background: none;
+}
