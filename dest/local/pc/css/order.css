@@ -201,7 +201,7 @@ button {
   z-index: 100;
 }
 .p-form > * {
-  width: calc(50% - 10px);
+  width: calc(50% - 5px);
 }
 .p-form > *.is-max {
   width: 100%;
@@ -224,6 +224,7 @@ button {
   gap: min(calc(10 * (100vw / 375)) , 10px);
 }
 .c-input__label {
+  position: relative;
   font-size: min(calc(14 * (100vw / 375)) , 14px);
   font-weight: bold;
   line-height: 1;
@@ -237,6 +238,9 @@ button {
   font-size: min(calc(16 * (100vw / 375)) , 16px);
   margin-left: 0.25em;
   color: #ff1616;
+  position: absolute;
+  top: 0;
+  right: min(calc(-3 * (100vw / 375)) , -3px);
 }
 .c-input__txt {
   width: 100%;

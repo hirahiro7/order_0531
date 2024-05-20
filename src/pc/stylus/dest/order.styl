@@ -188,7 +188,7 @@ button
     z-index 100;
 
   > *
-    width: calc(50% - 10px);
+    width: calc(50% - 5px);
 
     &.is-max
       width: 100%;
@@ -203,6 +203,7 @@ button
   gap: vw(10);
 
   &__label
+    position: relative;
     font-size: vw(14);
     font-weight: bold;
     line-height: 1.0;
@@ -217,6 +218,9 @@ button
         font-size: vw(16)
         margin-left: .25em;
         color: col-red;
+        position: absolute;
+        top: 0;
+        right: vw(-3);
   
   &__txt
     width: 100%;
