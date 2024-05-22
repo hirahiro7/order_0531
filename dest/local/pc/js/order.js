@@ -93,7 +93,145 @@
           );
         }
       });
+    })();
 
+    const order = (() => {
+      let sel_sort = function (type) {
+        let wrapperClass = '.p-item';
+        let itemClass = '.c-item';
+        let $elms;
+
+        $(wrapperClass).each(function (i) {
+          let wrapSel = $(this);
+          switch (type) {
+            // おすすめ順
+            case 'recommend':
+              $elms = wrapSel.children(itemClass).sort(function (a, b) {
+                let val1 = parseInt($(a).attr('data-recommend'));
+                let val2 = parseInt($(b).attr('data-recommend'));
+                if (val1 < val2) {
+                  return -1;
+                } else if (val1 > val2) {
+                  return 1;
+                } else {
+                  return 0;
+                }
+              });
+              break;
+
+            // 品番順
+            case 'num':
+              $elms = wrapSel.children(itemClass).sort(function (a, b) {
+                let val1 = parseInt($(a).attr('data-num'));
+                let val2 = parseInt($(b).attr('data-num'));
+                if (val1 < val2) {
+                  return -1;
+                } else if (val1 > val2) {
+                  return 1;
+                } else {
+                  return 0;
+                }
+              });
+              break;
+
+            // 名前順
+            case 'name':
+              $elms = wrapSel.children(itemClass).sort(function (a, b) {
+                let val1 = $(a).find('.c-item__name').text();
+                let val2 = $(b).find('.c-item__name').text();
+                if (val1 < val2) {
+                  return -1;
+                } else if (val1 > val2) {
+                  return 1;
+                } else {
+                  return 0;
+                }
+              });
+              break;
+
+            // 価格低い順
+            case 'price_low':
+              $elms = wrapSel.children(itemClass).sort(function (a, b) {
+                // ¥マークを無視するため2文字目から取得して、カンマ','を削除
+                let val1 = parseInt($(a).find('.c-item__price').text().substring(1).replace(/,/g, ''));
+                let val2 = parseInt($(b).find('.c-item__price').text().substring(1).replace(/,/g, ''));
+                console.log(val1)
+                if (val1 < val2) {
+                  return -1;
+                } else if (val1 > val2) {
+                  return 1;
+                } else {
+                  return 0;
+                }
+              });
+              break;
+
+            // 価格高い順
+            case 'price_high':
+              $elms = wrapSel.children(itemClass).sort(function (a, b) {
+                // ¥マークを無視するため2文字目から取得して、カンマ','を削除
+                let val1 = parseInt($(a).find('.c-item__price').text().substring(1).replace(/,/g, ''));
+                let val2 = parseInt($(b).find('.c-item__price').text().substring(1).replace(/,/g, ''));
+                if (val1 < val2) {
+                  return 1;
+                } else if (val1 > val2) {
+                  return -1;
+                } else {
+                  return 0;
+                }
+              });
+              break;
+
+            default:
+              return false;
+              break;
+          }
+
+          wrapSel.empty();
+          $elms.each(function () {
+            wrapSel.append($(this));
+          });
+        });
+      };
+
+      const myEvent = (() => {
+        $('.js-orderSelect').on('change', function () {
+          sel_sort($(this).val());
+        });
+      })();
+    })();
+
+
+    const freeTxt = (() => {
+      let getFreeTxt = "GIT";
+
+      let wrapperClass = '.p-item';
+      let itemClass = '.c-item';
+
+      let freeSearch = function (getFreeTxt) {
+        if (!getFreeTxt) return false;
+        $(wrapperClass).each(function (i) {
+          let wrapSel = $(this);
+          wrapSel.children(itemClass).each(function () {
+            let itemSel = $(this);
+            // 最初非表示
+            itemSel.css('display', 'none');
+            // 入力(配列)すべてチェックする
+            $.each(getFreeTxt, function (j, val) {
+              if (itemSel.text().indexOf(val) != -1) {
+                itemSel.css('display', 'grid');
+              }
+            });
+          });
+        });
+      };
+
+      const myEvent = (() => {
+        $('.js-freeTxt').on('change', function () {
+          let getFreeTxt = $(this).val().split(' ');
+          freeSearch(getFreeTxt);
+        });
+      })();
     })();
 
   });

@@ -236,11 +236,10 @@ button {
 .c-input__label:is(.is-required *)::after {
   content: "*";
   font-size: min(calc(16 * (100vw / 375)) , 16px);
-  margin-left: 0.25em;
   color: #ff1616;
   position: absolute;
   top: 0;
-  right: min(calc(-3 * (100vw / 375)) , -3px);
+  left: calc(100% + 3px);
 }
 .c-input__txt {
   width: 100%;

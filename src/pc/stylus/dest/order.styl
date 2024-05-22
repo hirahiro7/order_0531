@@ -54,6 +54,20 @@ button
   appearance: none;
   font-noto();
 
+select
+  appearance: none;
+  border-radius: 0;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background: none transparent;
+  border: none;
+  vertical-align: middle;
+  font-size: inherit;
+  color: inherit;
+  box-sizing: content-box;
+  outline: none
+
 .l-order
   display: flex;
   flex-direction: column;
@@ -90,6 +104,25 @@ button
     height: vw(32);
     color: #fff;
     background: #000;
+
+.l-cart
+  &__btn
+    bottom: vw(10);
+    right: vw(10);
+
+.l-search
+  &__btn
+    bottom: vw(80);
+    right: vw(10);
+  
+  &__cnt
+    position: fixed
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.7);
+    z-index 120;
 
 .p-ttl
   display: flex;
@@ -162,7 +195,6 @@ button
       padding: vw(20);
       justify-content: center;
 
-
 .p-form
   position: relative;
   display: flex;
@@ -216,14 +248,15 @@ button
       &::after
         content: "*";
         font-size: vw(16)
-        margin-left: .25em;
+        // margin-left: .25em;
         color: col-red;
         position: absolute;
         top: 0;
-        right: vw(-3);
+        left: calc(100% + 3px);
   
   &__txt
     width: 100%;
+    background: #fff;
 
 .c-textform
   border: 1px solid #bbb;
@@ -263,14 +296,14 @@ button
   top: 0;
   left: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: vw(30) vw(10);
-  animation: itmFadeOut 1.0s forwards;
+  animation: itmWrapFadeOut 1.0s forwards;
 
   &.is-active
     position: relative;
     display: grid !important;
-    animation: itmFadeIn 1.0s forwards;
+    animation: itmWrapFadeIn 1.0s forwards;
     z-index 10;
 
 .c-item
@@ -280,6 +313,9 @@ button
   align-items: flex-start;
   gap: vw(10);
   border-radius: 6px;
+  animation: itmFadeIn .6s;
+
+  
 
   &__img
     position: relative;
@@ -329,7 +365,16 @@ button
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
-  
+
+  &__price
+    font-size: vw(14);
+    line-height: 1.0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+
   &__check
     position: relative;
     margin-top: vw(8);
@@ -338,6 +383,45 @@ button
   &__other
     position: relative;
     margin-top: vw(10);
+
+.c-fixedBtn
+  position: fixed;
+  width: vw(60);
+  height: vw(60);
+  z-index 100;
+  background: #fff;
+  border: solid 1px #333;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__badge
+    background: col-red;
+    color: #fff;
+    position: absolute;
+    top: vw(0);
+    right: vw(0);
+    width: vw(20);
+    height: vw(20);
+    font-size: vw(12);
+    line-height: 1.0;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  &__ico
+    width: 50%
+
+    &:is(.l-search *)
+      width: 40%;
+
+    svg
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
 
 
 .c-checkTbl
@@ -355,14 +439,22 @@ button
       margin: 0 auto;
 
 
-@keyframes itmFadeIn
+@keyframes itmWrapFadeIn
   from
     opacity: 0;
   to
     opacity: 1;
 
-@keyframes itmFadeOut
+@keyframes itmWrapFadeOut
   from
     opacity: 1;
   to
     opacity: 0;
+
+@keyframes itmFadeIn
+  from
+    opacity: 0;
+    transform: translateY(10px)
+  to
+    opacity: 1;
+    transform: translateY(0)
