@@ -234,5 +234,156 @@
       })();
     })();
 
+    const searchModal = (() => {
+      $('.js-searchModalOpen').on('click', function () {
+        $('.js-searchModal').fadeIn(100);
+      });
+
+      $('.js-searchModalClose').on('click', function () {
+        $('.js-searchModal').fadeOut(100);
+      });
+
+      $('.js-searchModal').on('click', function () {
+        $('.js-searchModal').fadeOut(100);
+      });
+
+      $('.p-search').on('click', function (e) {
+        e.stopPropagation();
+      });
+
+    })();
+
+    const cartfunc = (() => {
+      // モーダル
+      $('.js-cartOpen').on('click', function () {
+        if ($(this).hasClass('is-disable')) return false;
+        $('.js-cartModal').fadeIn(100).css('display', 'flex');
+      });
+
+      $('.js-cartClose,.jsformSubmit').on('click', function () {
+        $('.js-cartModal').fadeOut(100);
+      });
+
+      // アイコンバッチ
+      const badge = (() => {
+        let badgeCount = function () {
+          let count = 0;
+          $('.js-checkform').each(function () {
+            count = ($(this).prop("checked")) ? ++count : count;
+          });
+          return count;
+        };
+
+        $(document).on('click', '.js-checkform', (function () {
+          let badgeSet = function () {
+            if (badgeCount()) {
+              $('.js-cartBadge').css('display', 'flex').text(badgeCount());
+            } else {
+              $('.js-cartBadge').css('display', 'none');
+            }
+          };
+          badgeSet();
+          return badgeSet;
+        })());
+      })();
+
+      // カートアイテム作成
+      const cartItem = (() => {
+        let cartWrapSel = $('.js-cartWrap');
+
+        const myEvent = (() => {
+
+          let chkState = function () {
+            // チェックの状態をチェックする
+            $('.js-checkform').each(function () {
+              if ($(this).prop("checked")) {
+                $(this).parents('.c-item').addClass('js-checked');
+              } else {
+                // テーブル内の他のチェックボックスを判別する(複数選択の対応)
+                let ischecked = false;
+                $(this).parents('.c-checkTbl').find('.js-checkform').each(function () {
+                  if ($(this).prop("checked")) {
+                    ischecked = true;
+                  }
+                });
+                // テーブル内に他のチェックが無いときにアイテムのチェックフラグを落とす
+                if (!ischecked) {
+                  $(this).parents('.c-item').removeClass('js-checked');
+                }
+              }
+            });
+
+            return $('.c-item').hasClass('js-checked');
+          };
+
+          let update = function () {
+            cartWrapSel.empty();
+            let insertCart = function (itemSel) {
+              // DOM作っていく
+              let imgSrc = itemSel.find('.c-item__img img').attr('src');
+              let num = itemSel.find('.c-item__num').text();
+              let name = itemSel.find('.c-item__name').text();
+              let price = itemSel.find('.c-item__price').text();
+              // テーブルの見出し部分を最初に定義
+              let sku = "<tr><th>サイズ</th><th>サイズ</th><th>金額</th></tr>";
+              itemSel.find('.js-checkform:checked').each(function () {
+                let size = $(this).attr('data-size');
+                let color = $(this).attr('data-color');
+                sku += `<tr><td>${size}</td><td>${color}</td><td>${price}</td></tr>`
+              });
+              let other = (itemSel.find('.c-item__other .c-textform').val()) ? `<div class="c-cartItem__other"><p>${itemSel.find('.c-item__other .c-textform').val()}</p></div>` : '';
+              let dom = `<div class="c-cartItem">
+                            <div class="c-cartItem__img">
+                              <img src="${imgSrc}" alt="">
+                            </div>
+                            <p class="c-cartItem__num">${num}</p>
+                            <p class="c-cartItem__name">${name}</p>
+                            <div class="c-cartItem__tbl">
+                              <table>
+                                ${sku}
+                              </table>
+                            </div>
+                            ${other}
+                         </div>`;
+              $(cartWrapSel).append(dom);
+            };
+            if (chkState()) {
+              // カートボタンを有効に
+              $('.js-cartOpen').removeClass('is-disable');
+              $('.c-item').each(function () {
+                $(this).find('.js-otherform').attr('disabled', true);
+                if ($(this).hasClass('js-checked')) {
+                  $(this).find('.js-otherform').attr('disabled', false);
+                  insertCart($(this));
+                }
+              });
+            } else {
+              // カートボタンを無効
+              $('.js-cartOpen').addClass('is-disable');
+              // 補足情報入力を無効
+              $('.js-otherform').attr('disabled', true);
+            }
+          };
+
+          $(document).on('click', '.js-checkform', (function () {
+            update();
+            return update;
+          })());
+
+          $(document).on('change', '.js-otherform', (function () {
+            update();
+            return update;
+          })());
+
+        })();
+      })();
+
+    })();
+
+
+    const formfunc = (() => {
+
+    })();
+
   });
 }($));

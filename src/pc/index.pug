@@ -1072,12 +1072,12 @@ block content
                           td !{size.name}
                           each color, z in item.colors
                             td 
-                              input(type="checkbox"  name=`${size.val}` value=`${color}`).c-checkform
+                              input(type="checkbox" data-size=`${size.name}` data-color=`${color}` name=`${size.val}` value=`${color}`).c-checkform.js-checkform
                   .c-item__other
                     .c-input
                       .c-input__label.is-other 補足情報
                       .c-input__txt
-                        input(type="text" name=`${item.otherval}` placeholder="同アイテム2個以上等").c-textform
+                        input(type="text" name=`${item.otherval}` placeholder="同アイテム2個以上等" disabled).c-textform.js-otherform
 
             each cate , i in category
               .p-item
@@ -1098,16 +1098,16 @@ block content
                             td !{size.name}
                             each color, z in item.colors
                               td 
-                                input(type="checkbox"  name=`${size.val}` value=`${color}`).c-checkform
+                                input(type="checkbox" data-size=`${size.name}` data-color=`${color}` name=`${size.val}` value=`${color}`).c-checkform.js-checkform
                     .c-item__other
                       .c-input
                         .c-input__label.is-other 補足情報
                         .c-input__txt
-                          input(type="text" name="entry.1697608423" placeholder="同アイテム2個以上等").c-textform
+                          input(type="text" name="entry.1697608423" placeholder="同アイテム2個以上等" disabled).c-textform.js-otherform
         
         .l-cart
-          .c-fixedBtn.l-cart__btn
-            .c-fixedBtn__badge 10
+          .c-fixedBtn.l-cart__btn.js-cartOpen.is-disable
+            .c-fixedBtn__badge.js-cartBadge
             .c-fixedBtn__ico
               svg(viewbox="0 0 44 33" fill="#222")
                 g
@@ -1116,32 +1116,99 @@ block content
                     path(d="M36,23a4,4,0,1,1-4,4,4,4,0,0,1,4-4m0-2a6,6,0,1,0,6,6,6,6,0,0,0-6-6Z")
                     polyline(points="1 1 8 1 11 22 41 22 43 6.01 14 6.01" style="fill:none;stroke:#222;stroke-linejoin:round;stroke-linecap:round;stroke-width:1.8px;")
                     line(x1="10" y1="17" x2="41.57" y2="17" style="fill:none;stroke:#222;stroke-linejoin:round;stroke-linecap:round;stroke-width:1.8px;")
-          .l-cart__cnt
-          //- button(type="submit").p-form__submit 注文する
+          .l-cart__cnt.js-cartModal
+            .p-cart
+              .p-cart__close.c-fixedBtn.js-cartClose
+              .p-cart__items.js-cartWrap
+                .c-cartItem
+                  .c-cartItem__img
+                    img(src="https://store.world.co.jp/img/item/BR688/BR68824S0026/BR68824S0026_l2_c102.jpg", alt="")
+                  p.c-cartItem__num 55555555
+                  p.c-cartItem__name asdfasdf
+                  .c-cartItem__tbl
+                    table
+                      tr
+                        th カラー
+                        th サイズ
+                        th 金額
+                      tr
+                        td ベージュ
+                        td 38
+                        td &yen;9,800
+                      tr
+                        td ベージュ
+                        td 38
+                        td &yen;9,800
+                  .c-cartItem__other
+                    p 補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足
+                .c-cartItem
+                  .c-cartItem__img
+                    img(src="https://store.world.co.jp/img/item/BR688/BR68824S0026/BR68824S0026_l2_c102.jpg", alt="")
+                  p.c-cartItem__num 55555555
+                  p.c-cartItem__name asdfasdf
+                  .c-cartItem__tbl
+                    table
+                      tr
+                        th カラー
+                        th サイズ
+                        th 金額
+                      tr
+                        td ベージュ
+                        td 38
+                        td &yen;9,800
+                      tr
+                        td ベージュ
+                        td 38
+                        td &yen;9,800
+                  .c-cartItem__other
+                    p 補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足
+                .c-cartItem
+                  .c-cartItem__img
+                    img(src="https://store.world.co.jp/img/item/BR688/BR68824S0026/BR68824S0026_l2_c102.jpg", alt="")
+                  p.c-cartItem__num 55555555
+                  p.c-cartItem__name asdfasdf
+                  .c-cartItem__tbl
+                    table
+                      tr
+                        th カラー
+                        th サイズ
+                        th 金額
+                      tr
+                        td ベージュ
+                        td 38
+                        td &yen;9,800
+                      tr
+                        td ベージュ
+                        td 38
+                        td &yen;9,800
+                  .c-cartItem__other
+                    p 補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足補足
+
+              button(type="submit").p-cart__submit.jsformSubmit 注文する
+            .m-noScroll
           script.
             var submitted = false;
           iframe(name="hidden_iframe" id="hidden_iframe" style="display: none" onload="if(submitted){window.location='thanks.html';}")
         .l-search
-          .c-fixedBtn.l-search__btn
+          .c-fixedBtn.l-search__btn.js-searchModalOpen
             .c-fixedBtn__ico
               svg(viewbox="0 0 45.085 46.126")
                 g(transform="translate(1.5 1.5)")
                   ellipse(cx="17.539" cy="17.539" rx="17.539" ry="17.539" fill="none" stroke="#222" stroke-miterlimit="10" stroke-width="3")
                   line(x2="11.222" y2="11.972" transform="translate(30.242 30.534)" fill="none" stroke="#222" stroke-linecap="round" stroke-miterlimit="10" stroke-width="3")
-          .l-search__cnt
+          .l-search__cnt.js-searchModal
             .p-search
-              .c-search.p-search__it
-                .c-search__select
-                  select.js-orderSelect
-                    option(value="recommend") おすすめ順
-                    option(value="num") 品番順
-                    option(value="name") 名前順
-                    option(value="price_low") 価格低い順
-                    option(value="price_high") 価格高い順
+              .c-select.p-search__it
+                select.js-orderSelect.c-selectform.is-order
+                  option(value="recommend") おすすめ順
+                  option(value="num") 品番順
+                  option(value="name") 名前順
+                  option(value="price_low") 価格低い順
+                  option(value="price_high") 価格高い順
               .c-input.p-search__it
                 .c-input__txt
-                  input(type="text").c-textform.js-freeTxt
-              .p-search__submit 閉じる
+                  input(type="text").c-textform.js-freeTxt.is-freeTxt
+              .p-search__submit.js-searchModalClose 閉じる
 
 
     .l-order__footer

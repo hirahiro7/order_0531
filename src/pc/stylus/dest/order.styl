@@ -53,6 +53,7 @@ button
   padding: 0;
   appearance: none;
   font-noto();
+  line-height: 1.0;
 
 select
   appearance: none;
@@ -66,7 +67,9 @@ select
   font-size: inherit;
   color: inherit;
   box-sizing: content-box;
-  outline: none
+  outline: none;
+  font-noto();
+  line-height: 1.0;
 
 .l-order
   display: flex;
@@ -79,7 +82,7 @@ select
   font-noto();
   font-feature-settings: "palt";
   gap: vw(40);
-  padding: vw(40) vw(20) vw(64);
+  padding: vw(40) vw(20) 0;
   box-sizing: border-box;
 
   &__ttl
@@ -109,6 +112,23 @@ select
   &__btn
     bottom: vw(10);
     right: vw(10);
+  
+  &__cnt
+    position: fixed
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,.96);
+    z-index 120;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto
+    padding: vw(20);
+    box-sizing: border-box;
+    overscroll-behavior: contain;
+    display: none;
 
 .l-search
   &__btn
@@ -121,8 +141,9 @@ select
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,.7);
+    background: rgba(0,0,0,.6);
     z-index 120;
+    display: none;
 
 .p-ttl
   display: flex;
@@ -228,6 +249,164 @@ select
     &.p-itemarea
       margin-top: vw(20);
 
+.p-search
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: vw(24);
+  padding: vw(24);
+  box-sizing: border-box;
+  width: 50%;
+  height: 100%;
+  background: #fff;
+  margin-left: auto;
+  animation: searchFadeIn .4s;
+
+  &__it
+    width: 100%;
+    position: relative;
+  
+  &__submit
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: vw(40);
+    background: #404040;
+    color: #fff;
+    border-radius: 2px;
+    margin-top: vw(16);
+    font-size: vw(14);
+    line-height: 1.0;
+    font-noto();
+    letter-spacing: .075em;
+
+    &:hover
+      cursor pointer;
+
+.p-cart
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: vw(32);
+
+  &__close
+    position relative
+    top: vw(10);
+    right: vw(10);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::before
+      content: "";
+      top: 0;
+      left: 0;
+      position: relative;
+      width: 36%;
+      height: 36%;
+      background: #222;
+      closeclip();
+
+  &__items
+    position: relative;
+    width: 100%
+
+    > .c-cartItem
+      position: relative;
+
+      & + .c-cartItem
+        margin-top: vw(20);
+        border-top: 1px solid #ccc;
+        padding-top: vw(20);
+
+  &__submit
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: vw(64);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #8c3e44;
+    color: #fff;
+    font-size: vw(16);
+    line-height: 1.0;
+    letter-spacing: .075em;
+    z-index 100;
+
+.c-cartItem
+  display: grid;
+  grid-auto-columns: vw(120) auto 1fr;
+  grid-auto-rows: auto auto auto auto;
+  align-items: center;
+  gap: vw(8);
+  
+  &__img
+    position: relative;
+    width: 100%;
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+
+    img
+      width: 100%;
+      height: auto;
+  
+  &__num
+    position: relative;
+    font-size: vw(16);
+    line-height: 1.6;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    margin-top: auto
+
+  &__name
+    position: relative;
+    font-size: vw(16);
+    line-height: 1.6;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    margin-bottom: auto
+  
+  &__tbl
+    position: relative;
+    grid-column: 1 / 4;
+    grid-row: 3 / 4;
+
+    table
+      width: 100%;
+      border: 1px solid #eee;
+
+      th
+        font-size: vw(13);
+        line-height: 1.0;
+        font-weight: bold;
+        background: #ddd;
+        padding: vw(4);
+        border: 1px solid #eee;
+
+      td
+        font-size: vw(13);
+        text-align: center;
+        padding: vw(4);
+        border: 1px solid #eee;
+
+  &__other
+    position: relative;
+    grid-column: 1 / 4;
+    grid-row: 4 / 5;
+
+    &::before
+      content: "補足情報";
+      font-size: vw(12);
+    
+    p
+      font-size: vw(12);
+      line-height: 1.6;
+
 .c-input
   display: flex;
   flex-direction: column;
@@ -258,14 +437,52 @@ select
     width: 100%;
     background: #fff;
 
+.c-selectform
+  border: 1px solid #bbb;
+  border-radius: 2px;
+  width: 100%;
+  height: vw(40);
+  padding: .5em;
+  box-sizing: border-box;
+  font-size: vw(14);
+  background: #fff;
+  
+  &:focus
+    font-size: vw(16);
+  
+  &.is-order
+    background: url("data:image/svg+xml;utf8,<svg viewBox='0 0 17 17' fill='none' xmlns='http://www.w3.org/2000/svg'><g clip-path='url(%23clip0_5449_39418)'><path id='Vector' d='M16.02 7.5H0V9H16.02V7.5Z' fill='%23222'/><path id='Vector_2' d='M16.04 13H0.0400391V14.5H16.04V13Z' fill='%23222'/><path id='Vector_3' d='M16.02 2H0V3.5H16.02V2Z' fill='%23222'/><path id='Vector_4' d='M5 4.75C6.10457 4.75 7 3.85457 7 2.75C7 1.64543 6.10457 0.75 5 0.75C3.89543 0.75 3 1.64543 3 2.75C3 3.85457 3.89543 4.75 5 4.75Z' fill='white' stroke='%23222' stroke-width='1.5' stroke-miterlimit='10'/><path id='Vector_5' d='M11.3604 10.25C12.4649 10.25 13.3604 9.35457 13.3604 8.25C13.3604 7.14543 12.4649 6.25 11.3604 6.25C10.2558 6.25 9.36035 7.14543 9.36035 8.25C9.36035 9.35457 10.2558 10.25 11.3604 10.25Z' fill='white' stroke='%23222' stroke-width='1.5' stroke-miterlimit='10'/><path id='Vector_6' d='M5 15.75C6.10457 15.75 7 14.8546 7 13.75C7 12.6454 6.10457 11.75 5 11.75C3.89543 11.75 3 12.6454 3 13.75C3 14.8546 3.89543 15.75 5 15.75Z' fill='white' stroke='%23222' stroke-width='1.5' stroke-miterlimit='10'/></g><defs><clipPath id='clip0_5449_39418'><rect width='16.04' height='16.5' fill='white'/></clipPath></defs></svg>");
+    background-size: vw(20);
+    background-position-y: 50%;
+    background-position-X: calc(100% - .5em);
+    background-repeat: no-repeat;
+    background-color: #fff;
+    padding-right: vw(30);
+  
 .c-textform
   border: 1px solid #bbb;
   border-radius: 2px;
   width: 100%;
-  height: vw(32);
+  height: vw(40);
   padding: .5em;
   box-sizing: border-box;
-  font-size: vw(16)
+  font-size: vw(16);
+  background: #fff;
+
+  &:disabled
+    background: #ccc;
+
+  &:focus
+    font-size: vw(16);
+  
+  &.is-freeTxt
+    background: url("data:image/svg+xml;utf8,<svg viewBox='0 0 45.085 46.126' xmlns='http://www.w3.org/2000/svg'><g transform='translate(1.5 1.5)'><ellipse cx='17.539' cy='17.539' rx='17.539' ry='17.539' fill='none' stroke='%23222' stroke-miterlimit='10' stroke-width='4'></ellipse><line x2='11.222' y2='11.972' transform='translate(30.242 30.534)' fill='none' stroke='%23222' stroke-linecap='round' stroke-miterlimit='10' stroke-width='4'></line></g></svg>");
+    background-size: vw(20);
+    background-position-y: 50%;
+    background-position-X: calc(100% - .5em);
+    background-repeat: no-repeat;
+    background-color: #fff;
+    padding-right: vw(30);
 
 .c-checkform
   display: block;
@@ -309,7 +526,7 @@ select
 .c-item
   display: grid;
   grid-template-rows: subgrid;
-  grid-row: span 5;
+  grid-row: span 6;
   align-items: flex-start;
   gap: vw(10);
   border-radius: 6px;
@@ -396,6 +613,15 @@ select
   justify-content: center;
   align-items: center;
 
+  &.is-disable
+    background: rgba(0,0,0,.5);
+
+    &:hover
+      cursor: initial;
+
+  &:hover
+    cursor pointer;
+
   &__badge
     background: col-red;
     color: #fff;
@@ -410,6 +636,11 @@ select
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: badgeCount .6s;
+    display: none;
+
+    &:is(.is-disable *)
+      display: none;
 
   &__ico
     width: 50%
@@ -422,7 +653,6 @@ select
       width: 100%;
       height: 100%;
       object-fit: cover;
-
 
 .c-checkTbl
   width: 100%;
@@ -438,6 +668,13 @@ select
     .c-checkform
       margin: 0 auto;
 
+
+.m-noScroll
+  position: absolute;
+  top: 0;
+  height:calc(100vh + 1px) ;
+  width: 1px;
+  background-color: transparent;  
 
 @keyframes itmWrapFadeIn
   from
@@ -458,3 +695,14 @@ select
   to
     opacity: 1;
     transform: translateY(0)
+@keyframes searchFadeIn
+  from
+    transform: translateX(100%)
+  to
+    transform: translateX(0)
+
+@keyframes badgeCount
+  from
+    transform: rotateY(0deg);
+  to
+    transform: rotateY(360deg)
