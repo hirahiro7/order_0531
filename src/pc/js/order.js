@@ -361,7 +361,7 @@
               // カートボタンを無効
               $('.js-cartOpen').addClass('is-disable');
               // 補足情報入力を無効
-              $('.js-otherform').attr('disabled', true);
+              $('.js-otherform').attr('disabled', true).val('');
             }
           };
 
@@ -382,7 +382,6 @@
 
 
     const formfunc = (() => {
-
     })();
 
   });

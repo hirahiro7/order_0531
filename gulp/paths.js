@@ -51,7 +51,7 @@ module.exports = {
     }
   },
   url: {
-    pc: "/s/feels/orders/",
-    sp: "/res/s/feels/orders/"
+    pc: "/s/brand/gallest/orders/",
+    sp: "/res/s/brand/gallest/orders/"
   }
 };
